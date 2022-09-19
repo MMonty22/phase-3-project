@@ -20,7 +20,7 @@ Person.create([
     {
         name: "Cody"
     },
-    {
+    { 
         name: "Tank"
     }
 ])
@@ -48,7 +48,7 @@ Bet.create([
     },
     {
         description: "Sun 1st Half ML vs Aces",
-        odds: "135",
+        odds: "+135",
         league: "WNBA",
         bet_type: "Moneyline",
         result: "Win",

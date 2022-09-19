@@ -1,0 +1,171 @@
+--- !ruby/object:ActiveRecord::ConnectionAdapters::SchemaCache
+columns:
+  bets:
+  - &4 !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: id
+    sql_type_metadata: &2 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+      sql_type: integer
+      type: :integer
+      limit: 
+      precision: 
+      scale: 
+    'null': false
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: description
+    sql_type_metadata: &1 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+      sql_type: varchar
+      type: :string
+      limit: 
+      precision: 
+      scale: 
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: odds
+    sql_type_metadata: *1
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: league
+    sql_type_metadata: *1
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: bet_type
+    sql_type_metadata: *1
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: result
+    sql_type_metadata: *1
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: units_change
+    sql_type_metadata: !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+      sql_type: float
+      type: :float
+      limit: 
+      precision: 
+      scale: 
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: segment
+    sql_type_metadata: *1
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: person_id
+    sql_type_metadata: *2
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &5 !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: created_at
+    sql_type_metadata: &3 !ruby/object:ActiveRecord::ConnectionAdapters::SqlTypeMetadata
+      sql_type: datetime(6)
+      type: :datetime
+      limit: 
+      precision: 6
+      scale: 
+    'null': false
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - &6 !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: updated_at
+    sql_type_metadata: *3
+    'null': false
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  people:
+  - *4
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: name
+    sql_type_metadata: *1
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  schema_migrations:
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: version
+    sql_type_metadata: *1
+    'null': false
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  ar_internal_metadata:
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: key
+    sql_type_metadata: *1
+    'null': false
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - !ruby/object:ActiveRecord::ConnectionAdapters::Column
+    name: value
+    sql_type_metadata: *1
+    'null': true
+    default: 
+    default_function: 
+    collation: 
+    comment: 
+  - *5
+  - *6
+primary_keys:
+  bets: id
+  people: id
+  schema_migrations: version
+  ar_internal_metadata: key
+data_sources:
+  bets: true
+  people: true
+  schema_migrations: true
+  ar_internal_metadata: true
+indexes:
+  bets: []
+  people: []
+  schema_migrations: []
+  ar_internal_metadata: []
+version: 20220917185620
+database_version: !ruby/object:ActiveRecord::ConnectionAdapters::AbstractAdapter::Version
+  version:
+  - 3
+  - 31
+  - 1
+  full_version_string: 
