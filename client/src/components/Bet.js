@@ -1,12 +1,31 @@
 import React from "react";
 
 function Bet({betInfo}) {
-    const {description, odds, league, bet_type, result, units_change, segment} = betInfo[0]
-    //console.log('betInfo', betInfo[0])
-    //Dani = 1, Brad = 2, Cam = 3, Michael = 4, Funston = 5, Cody = 6, Tank = 7
+    const {description, odds, league, bet_type, result, units_change, person_id, segment} = betInfo[0]
+
+    function handlePersonID(person_id) {
+        switch(person_id) {
+            case 1:
+                return 'Dani'
+            case 2:
+                return 'Brad'
+            case 3:
+                return 'Cam'
+            case 4:
+                return 'Michael'
+            case 5:
+                return 'Funston'
+            case 6:
+                return 'Cody'
+            case 7:
+                return 'Tank'
+            default:
+        }
+    }
 
     return (
         <div className="betInfo">
+            <h2>{handlePersonID(person_id)}</h2>
             <h3>{description} ({odds})</h3>
             <p>Result: {result}</p>
             <p>Type of Bet: {bet_type}</p>
