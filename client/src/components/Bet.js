@@ -1,8 +1,8 @@
 import React from "react";
 
 function Bet({betInfo}) {
-    const {description, odds, league, betType, result, unitsChange, segment} = betInfo
-
+    const {description, odds, league, betType, result, unitsChange, segment} = betInfo[0]
+    
     return (
         <div className="betInfo">
             <h3>{description} {odds}</h3>

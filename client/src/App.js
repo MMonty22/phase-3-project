@@ -10,10 +10,7 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:9292/people')
     .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      setBets(data)
-    })
+    .then(data => setBets(data))
   }, [])
 
   return (
@@ -21,9 +18,7 @@ function App() {
       <h1 className="header">Live on the Line Bet Tracker</h1>
       <NavBar />
       <Routes>
-        <Route path="/Bets">
-          <MainContainer bets={bets}/>
-        </Route>
+        <Route path="/" element={<MainContainer bets={bets}/>}/>
       </Routes>
     </div>
   );
