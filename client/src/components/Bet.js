@@ -1,7 +1,9 @@
 import React from "react";
 
-function Bet({betInfo}) {
+function Bet({betInfo, bets}) {
     const {description, odds, league, bet_type, result, units_change, person_id, segment} = betInfo[0]
+
+    // const names = bets.forEach((person) => person.name)
 
     function handlePersonID(person_id) {
         switch(person_id) {
@@ -23,11 +25,14 @@ function Bet({betInfo}) {
         }
     }
 
+    //should change this so I dont have to hard code in a case for each person that is added
+
     return (
         <div className="betInfo">
             <h2>{handlePersonID(person_id)}</h2>
+            <p>Most Recent Bet</p>
             <h3>{description} ({odds})</h3>
-            <p>Result: {result}</p>
+            <p><small>Result: {result}</small></p>
             <p>Type of Bet: {bet_type}</p>
             <p>League: {league}</p>
             <p>Units Won or Lost: {units_change}</p>
