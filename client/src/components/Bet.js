@@ -1,6 +1,6 @@
 import React from "react";
 
-function Bet({betInfo, bets}) {
+function Bet({betInfo, bets, handleShowTable}) {
     const {description, odds, league, bet_type, result, units_change, person_id, segment} = betInfo[0]
 
     // const names = bets.forEach((person) => person.name)
@@ -24,19 +24,21 @@ function Bet({betInfo, bets}) {
             default:
         }
     }
+    //should change this so I dont have to hard code in a case for each person that is added, can I do this with the name from the above forEach??
 
-    //should change this so I dont have to hard code in a case for each person that is added
+    function handleClick() {
+        handleShowTable()
+    }
 
     return (
         <div className="betInfo">
-            <h2>{handlePersonID(person_id)}</h2>
-            <p>Most Recent Bet</p>
+            <h2 onclick={handleClick}>{handlePersonID(person_id)}'s Most Recent Bet</h2>
             <h3>{description} ({odds})</h3>
-            <p><small>Result: {result}</small></p>
-            <p>Type of Bet: {bet_type}</p>
-            <p>League: {league}</p>
+            <p>Result: {result}</p>
             <p>Units Won or Lost: {units_change}</p>
-            <p>Segment: {segment}</p>
+            {/* <p>Type of Bet: {bet_type}</p>
+            <p>League: {league}</p>
+            <p>Segment: {segment}</p> */}
         </div>
     )
 }
