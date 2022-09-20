@@ -63,6 +63,7 @@ function Form({addBet}) {
                 <input id="unitsChange" type="text" name="units_change" placeholder="Ex: +1.3 or -1.15" value={formData.unitsChange} onChange={handleChange}></input>
                 <label>Segment</label>
                 <input id="segment" type="text" name="segment" placeholder="Ex: Take It to the Bank" value={formData.segment} onChange={handleChange}></input>
+                <button type="submit">Add Bet</button>
                 <label>Add Another Bet?</label>
                 <input id="checkbox" type="checkbox" checked={checked} onChange={handleCheck}></input>
             </form>
