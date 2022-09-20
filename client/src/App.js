@@ -7,6 +7,7 @@ import Form from './components/Form';
 
 function App() {
   const [bets, setBets] = useState([])
+  const [isShown, setIsShown] = useState(false)
 
   useEffect(() => {
     fetch('http://localhost:9292/people')
@@ -24,7 +25,7 @@ function App() {
       <h1 className="header">Live on the Line Bet Tracker</h1>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<MainContainer bets={bets}/>}/>
+        <Route exact path="/" element={<MainContainer bets={bets} isShown={isShown} setIsShown={setIsShown}/>}/>
         <Route path="/AddBet" element={<Form addBet={addBet}/>}/>
       </Routes>
     </div>
