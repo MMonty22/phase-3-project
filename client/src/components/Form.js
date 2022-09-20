@@ -41,6 +41,10 @@ function Form({addBet}) {
         })
     }
 
+    function handleCheck() {
+        setChecked(!checked)
+    }
+
     return (
         <div className="form">
             <h2>Add A Bet</h2>
@@ -60,7 +64,7 @@ function Form({addBet}) {
                 <label>Segment</label>
                 <input id="segment" type="text" name="segment" placeholder="Ex: Take It to the Bank" value={formData.segment} onChange={handleChange}></input>
                 <label>Add Another Bet?</label>
-                <input id="checkbox" type="checkbox" checked={checked} onChange={}></input>
+                <input id="checkbox" type="checkbox" checked={checked} onChange={handleCheck}></input>
             </form>
         </div>
     )
