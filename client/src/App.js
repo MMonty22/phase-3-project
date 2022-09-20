@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 import {Routes, Route} from 'react-router-dom'
 import NavBar from "./components/NavBar"
 import MainContainer from "./components/MainContainer"
+import Form from './components/Form';
 
 function App() {
   const [bets, setBets] = useState([])
@@ -13,12 +14,18 @@ function App() {
     .then(data => setBets(data))
   }, [])
 
+  function addBet(newBet) {
+    const updatedBets = [newBet,...bets]
+    setBets(updatedBets)
+  }
+
   return (
     <div className="App">
       <h1 className="header">Live on the Line Bet Tracker</h1>
       <NavBar />
       <Routes>
         <Route path="/" element={<MainContainer bets={bets}/>}/>
+        <Route path="AddBet" element={<Form addBet={addBet}/>}/>
       </Routes>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-function Form() {
+function Form({addBet}) {
     const [formData, setFormData] = useState({
         personName: "",
         bet: "",
@@ -12,11 +12,32 @@ function Form() {
     })
     const [checked, setChecked] = useState(false)
 
+    function handleSubmit(event) {
+        event.preventDefault()
+        const newBetObj = {
+            person: formData.personName,
+            bet: formData.bet,
+            odds: formData.odds,
+            league: formData.league,
+            result: formData.result,
+            unitsChange: formData.unitsChange,
+            segment: formData.segment
+        }
+        fetch('http://localhost:9292/people', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newBetObj)
+        })
+        .then(res => res.json())
+        .then(data => addBet(data))
+    }
 
     return (
         <div className="form">
             <h2>Add A Bet</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <label>Person</label>
                 <input id="personName" type="text" name="name" placeholder="Person's Name" value={formData.personName} onChange={}></input>
                 <label>Bet</label>
