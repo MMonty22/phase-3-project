@@ -24,8 +24,8 @@ function App() {
       <h1 className="header">Live on the Line Bet Tracker</h1>
       <NavBar />
       <Routes>
-        <Route path="/" element={<MainContainer bets={bets}/>}/>
-        <Route path="AddBet" element={<Form addBet={addBet}/>}/>
+        <Route exact path="/" element={<MainContainer bets={bets}/>}/>
+        <Route path="/AddBet" element={<Form addBet={addBet}/>}/>
       </Routes>
     </div>
   );
