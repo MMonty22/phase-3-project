@@ -1,8 +1,8 @@
 import React from "react";
 import Bet from "./Bet";
 
-function MainContainer({bets, isShown, setIsShown}) {
-    const info = bets.map((betInfo) => <Bet key={betInfo.id} betInfo={betInfo.bets} bets={bets} isShown={isShown} setIsShown={setIsShown}/>)
+function MainContainer({bets, handlePersonID, navigate}) {
+    const info = bets.map((betInfo) => <Bet key={betInfo.id} betInfo={betInfo.bets} bets={bets} handlePersonID={handlePersonID} navigate={navigate}/>)
 
     return (
         <div>
