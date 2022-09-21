@@ -52,12 +52,20 @@ function App() {
     setBets(formerBets)
   }
 
+  function handleRemoveBet() {
+    fetch(`http://localhost:9292/people/:id`, {
+      method: "DELETE",
+    })
+    .then(res => res.json())
+    .then(deletedBet => removeBet(deletedBet))
+  }
+
   return (
     <div className="App">
       <h1 className="header">Live on the Line Bet Tracker</h1>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<MainContainer betData={betData} handlePersonID={handlePersonID} editBet={editBet} removeBet={removeBet}/>}/>
+        <Route exact path="/" element={<MainContainer betData={betData} handlePersonID={handlePersonID} editBet={editBet} handleRemoveBet={handleRemoveBet}/>}/>
         <Route path="/AddBet" element={<Form addBet={addBet}/>}/>
       </Routes>
     </div>

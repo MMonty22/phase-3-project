@@ -1,6 +1,6 @@
 import React from "react";
 
-function Table({betInfo, editBet, removeBet}) {
+function Table({betInfo, editBet, handleRemoveBet}) {
     const {description, odds, league, bet_type, result, units_change, segment} = betInfo
 
     function handleEdit() {
@@ -8,7 +8,7 @@ function Table({betInfo, editBet, removeBet}) {
     }
 
     function handleDelete() {
-        removeBet(betInfo)
+        handleRemoveBet(betInfo)
     }
 
     return (
