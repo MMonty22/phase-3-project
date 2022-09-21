@@ -15,8 +15,8 @@ function Bet({betInfo, handlePersonID}) {
             <h3>{description} ({odds})</h3>
             <p>Result: {result}</p>
             <p>Units Won or Lost: {units_change}</p>
-            <button onClick={handleClick}>See All of {handlePersonID(person_id)}'s bets</button>
-            {isShown && <Table betInfo={betInfo} handlePersonID={handlePersonID}/>}
+            <button onClick={handleClick}>{isShown ? "See Less Bets" : `See All of ${handlePersonID(person_id)}'s bets`}</button>
+            {isShown && <Table betInfo={betInfo}/>}
         </div>
     )
 }
