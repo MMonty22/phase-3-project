@@ -43,12 +43,20 @@ function App() {
   }
   //can I change this so I dont have to hard code in a case for each person that is added?
 
+  function editBet(bet) {
+
+  }
+
+  function removeBet(bet) {
+
+  }
+
   return (
     <div className="App">
       <h1 className="header">Live on the Line Bet Tracker</h1>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<MainContainer betData={betData} handlePersonID={handlePersonID}/>}/>
+        <Route exact path="/" element={<MainContainer betData={betData} handlePersonID={handlePersonID} editBet={editBet} removeBet={removeBet}/>}/>
         <Route path="/AddBet" element={<Form addBet={addBet}/>}/>
       </Routes>
     </div>

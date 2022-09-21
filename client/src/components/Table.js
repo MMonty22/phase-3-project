@@ -1,7 +1,15 @@
 import React from "react";
 
-function Table({betInfo}) {
+function Table({betInfo, editBet, removeBet}) {
     const {description, odds, league, bet_type, result, units_change, segment} = betInfo
+
+    function handleEdit() {
+        editBet()
+    }
+
+    function handleDelete() {
+        removeBet()
+    }
 
     return (
         <div className="table">
@@ -26,6 +34,8 @@ function Table({betInfo}) {
                         <td>{league}</td>
                         <td>{bet_type}</td>
                         <td>{segment}</td>
+                        <button onClick={handleEdit}>Edit Bet</button>
+                        <button onClick={handleDelete}>Delete Bet</button>
                     </tr>
                 </tbody>
             </table>
