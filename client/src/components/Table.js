@@ -1,10 +1,10 @@
 import React from "react";
 
-function Table({betInfo, editBet, handleRemoveBet}) {
+function Table({betInfo, handleRemoveBet, navigate}) {
     const {description, odds, league, bet_type, result, units_change, segment} = betInfo
 
-    function handleEdit() {
-        editBet()
+    function navigateToEditForm() {
+        navigate('/EditForm')
     }
 
     function handleDelete() {
@@ -37,7 +37,7 @@ function Table({betInfo, editBet, handleRemoveBet}) {
                     </tr>
                 </tbody>
             </table>
-            <button onClick={handleEdit}>Edit Bet</button>
+            <button onClick={navigateToEditForm}>Edit Bet</button>
             <button onClick={handleDelete}>Delete Bet</button>
         </div>
     )

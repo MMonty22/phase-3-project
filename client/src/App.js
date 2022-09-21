@@ -1,11 +1,13 @@
 import './App.css';
 import React, {useEffect, useState} from 'react'
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route, useNavigate} from 'react-router-dom'
 import NavBar from "./components/NavBar"
 import MainContainer from "./components/MainContainer"
 import Form from './components/Form';
+import EditForm from './components/EditForm';
 
 function App() {
+  const navigate = useNavigate()
   const [bets, setBets] = useState([])
 
   useEffect(() => {
@@ -43,8 +45,11 @@ function App() {
   }
   //can I change this so I dont have to hard code in a case for each person that is added?
 
-  function editBet(betToEdit) {
+  const betID = betData.map((betInfo) => betInfo[0].id)
 
+  function editBet(editedBet) {
+    const editedBets = [editedBet,...bets]
+    setBets(editedBets)
   }
 
   function removeBet(betToRemove) {
@@ -53,7 +58,7 @@ function App() {
   }
 
   function handleRemoveBet() {
-    fetch(`http://localhost:9292/people/:id`, {
+    fetch(`http://localhost:9292/people/${betID}`, {
       method: "DELETE",
     })
     .then(res => res.json())
@@ -65,8 +70,9 @@ function App() {
       <h1 className="header">Live on the Line Bet Tracker</h1>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<MainContainer betData={betData} handlePersonID={handlePersonID} editBet={editBet} handleRemoveBet={handleRemoveBet}/>}/>
+        <Route exact path="/" element={<MainContainer betData={betData} handlePersonID={handlePersonID} handleRemoveBet={handleRemoveBet}/>} navigate={navigate}/>
         <Route path="/AddBet" element={<Form addBet={addBet}/>}/>
+        <Route path="/EditForm" element={<EditForm editBet={editBet}/>}/>
       </Routes>
     </div>
   );

@@ -1,8 +1,8 @@
 import React from "react";
 import Bet from "./Bet";
 
-function MainContainer({betData, handlePersonID, editBet, handleRemoveBet}) {
-    const info = betData.map((betInfo) => <Bet key={betInfo.id} betInfo={betInfo[0]} handlePersonID={handlePersonID} editBet={editBet} handleRemoveBet={handleRemoveBet}/>)
+function MainContainer({betData, handlePersonID, handleRemoveBet, navigate}) {
+    const info = betData.map((betInfo) => <Bet key={betInfo.id} betInfo={betInfo[0]} handlePersonID={handlePersonID} handleRemoveBet={handleRemoveBet} navigate={navigate}/>)
 
     return (
         <div>
