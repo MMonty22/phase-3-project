@@ -7,4 +7,9 @@ class ApplicationController < Sinatra::Base
     people.to_json(include: :bets)
   end
 
+  post "/people" do
+    new_person = Person.create(name:params[:name], include: {bets: {description:params[:description], odds:params[:odds], league:params[:league], bet_type:params[:bet_type], result:params[:result], units_change:params[:units_change], segment:params[:segment]}})
+    new_person.to_json
+  end
+
 end

@@ -1,7 +1,7 @@
 import React from "react";
 
 function Table({betInfo, handlePersonID}) {
-    const {description, odds, league, bet_type, result, units_change, person_id, segment} = betInfo[0]
+    const {description, odds, league, bet_type, result, units_change, person_id, segment} = betInfo
 
     return (
         <div>
