@@ -12,4 +12,10 @@ class ApplicationController < Sinatra::Base
     new_person.to_json
   end
 
+  delete "/people/:id" do
+    person_bet = Person.find(params[:id])
+    person_bet.destroy
+    person_bet.to_json
+  end
+
 end
