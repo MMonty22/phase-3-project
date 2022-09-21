@@ -8,7 +8,7 @@ function Table({betInfo, editBet, removeBet}) {
     }
 
     function handleDelete() {
-        removeBet()
+        removeBet(betInfo)
     }
 
     return (
@@ -34,11 +34,11 @@ function Table({betInfo, editBet, removeBet}) {
                         <td>{league}</td>
                         <td>{bet_type}</td>
                         <td>{segment}</td>
-                        <button onClick={handleEdit}>Edit Bet</button>
-                        <button onClick={handleDelete}>Delete Bet</button>
                     </tr>
                 </tbody>
             </table>
+            <button onClick={handleEdit}>Edit Bet</button>
+            <button onClick={handleDelete}>Delete Bet</button>
         </div>
     )
 }

@@ -43,12 +43,13 @@ function App() {
   }
   //can I change this so I dont have to hard code in a case for each person that is added?
 
-  function editBet(bet) {
+  function editBet(betToEdit) {
 
   }
 
-  function removeBet(bet) {
-
+  function removeBet(betToRemove) {
+    const formerBets = bets.filter((bet) => bet.id !== betToRemove.id)
+    setBets(formerBets)
   }
 
   return (
