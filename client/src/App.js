@@ -72,7 +72,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<MainContainer betData={betData} handlePersonID={handlePersonID} handleRemoveBet={handleRemoveBet}/>} navigate={navigate}/>
         <Route path="/AddBet" element={<Form addBet={addBet}/>}/>
-        <Route path="/EditForm" element={<EditForm editBet={editBet}/>}/>
+        <Route path="/EditForm" element={<EditForm editBet={editBet} betID={betID}/>}/>
       </Routes>
     </div>
   );

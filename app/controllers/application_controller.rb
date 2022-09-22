@@ -18,4 +18,10 @@ class ApplicationController < Sinatra::Base
     person_bet.to_json
   end
 
+  patch "/people/:id" do
+    person_bet = Person.find(params[:id])
+    person_bet.update(name:params[:name], include: {bets: {description:params[:description], odds:params[:odds], league:params[:league], bet_type:params[:bet_type], result:params[:result], units_change:params[:units_change], segment:params[:segment]}})
+    person_bet.to_json
+  end
+
 end
