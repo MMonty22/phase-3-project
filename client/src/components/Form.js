@@ -71,7 +71,6 @@ function Form({addBet}) {
                 <input id="unitsChange" type="text" name="units_change" placeholder="Ex: +1.3 or -1.15" value={formData.unitsChange} onChange={handleChange}></input>
                 <label>Type of Bet</label>
                 <input id="betType" type="text" name="betType" placeholder="Ex: Spread or Moneyline or Total etc." value={formData.betType} onChange={handleChange}></input>
-                <button type="submit">Add Bet</button>
                 <label>Segment</label>
                 <input id="segment" type="text" name="segment" placeholder="Ex: Take It to the Bank" value={formData.segment} onChange={handleChange}></input>
                 <button type="submit">Add Bet</button>
@@ -92,6 +91,8 @@ function Form({addBet}) {
                 <input id="result" type="text" name="result" placeholder="Leave blank if no result" value={formData.result} onChange={handleChange}></input>
                 <label>Units Won or Lost</label>
                 <input id="unitsChange" type="text" name="units_change" placeholder="Ex: +1.3 or -1.15" value={formData.unitsChange} onChange={handleChange}></input>
+                <label>Type of Bet</label>
+                <input id="betType" type="text" name="betType" placeholder="Ex: Spread or Moneyline or Total etc." value={formData.betType} onChange={handleChange}></input>
                 <label>Segment</label>
                 <input id="segment" type="text" name="segment" placeholder="Ex: Take It to the Bank" value={formData.segment} onChange={handleChange}></input>
                 <button type="submit">Add Bet</button>
