@@ -2,13 +2,13 @@ import React, {useState} from "react";
 
 function Form({addBet}) {
     const [formData, setFormData] = useState({
-        personName: "",
+        name: "",
         bet: "",
         odds: "",
         league: "",
         result: "",
-        betType: "",
-        unitsChange: "",
+        bet_type: "",
+        units_change: "",
         segment: ""
     })
     const [checked, setChecked] = useState(false)
@@ -17,13 +17,13 @@ function Form({addBet}) {
     function handleSubmit(event) {
         event.preventDefault()
         const newBetObj = {
-            person: formData.personName,
+            name: formData.name,
             bet: formData.bet,
             odds: formData.odds,
             league: formData.league,
             result: formData.result,
-            unitsChange: formData.unitsChange,
-            betType: formData.betType,
+            units_change: formData.units_change,
+            bet_type: formData.bet_type,
             segment: formData.segment
         }
         fetch('http://localhost:9292/people', {
@@ -68,9 +68,9 @@ function Form({addBet}) {
                 <label>Result</label>
                 <input id="result" type="text" name="result" placeholder="Leave blank if no result" value={formData.result} onChange={handleChange}></input>
                 <label>Units Won or Lost</label>
-                <input id="unitsChange" type="text" name="units_change" placeholder="Ex: +1.3 or -1.15" value={formData.unitsChange} onChange={handleChange}></input>
+                <input id="unitsChange" type="text" name="units_change" placeholder="Ex: +1.3 or -1.15" value={formData.units_change} onChange={handleChange}></input>
                 <label>Type of Bet</label>
-                <input id="betType" type="text" name="betType" placeholder="Ex: Spread or Moneyline or Total etc." value={formData.betType} onChange={handleChange}></input>
+                <input id="betType" type="text" name="betType" placeholder="Ex: Spread or Moneyline or Total etc." value={formData.bet_type} onChange={handleChange}></input>
                 <label>Segment</label>
                 <input id="segment" type="text" name="segment" placeholder="Ex: Take It to the Bank" value={formData.segment} onChange={handleChange}></input>
                 <button type="submit">Add Bet</button>
@@ -90,9 +90,9 @@ function Form({addBet}) {
                 <label>Result</label>
                 <input id="result" type="text" name="result" placeholder="Leave blank if no result" value={formData.result} onChange={handleChange}></input>
                 <label>Units Won or Lost</label>
-                <input id="unitsChange" type="text" name="units_change" placeholder="Ex: +1.3 or -1.15" value={formData.unitsChange} onChange={handleChange}></input>
+                <input id="unitsChange" type="text" name="units_change" placeholder="Ex: +1.3 or -1.15" value={formData.units_change} onChange={handleChange}></input>
                 <label>Type of Bet</label>
-                <input id="betType" type="text" name="betType" placeholder="Ex: Spread or Moneyline or Total etc." value={formData.betType} onChange={handleChange}></input>
+                <input id="betType" type="text" name="betType" placeholder="Ex: Spread or Moneyline or Total etc." value={formData.bet_type} onChange={handleChange}></input>
                 <label>Segment</label>
                 <input id="segment" type="text" name="segment" placeholder="Ex: Take It to the Bank" value={formData.segment} onChange={handleChange}></input>
                 <button type="submit">Add Bet</button>
