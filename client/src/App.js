@@ -43,7 +43,7 @@ function App() {
         default:
       }
   }
-  //can I change this so I dont have to hard code in a case for each person that is added?
+  //need to change this, won't work with post requests, and dont want to have to hard code every name
 
   const betID = betData.map((betInfo) => betInfo[0].id)
 

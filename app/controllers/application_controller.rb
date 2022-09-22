@@ -8,8 +8,15 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/people' do
-    new_person = Person.create(name:params[:name], include: {bets: {description:params[:description], odds:params[:odds], league:params[:league], bet_type:params[:bet_type], result:params[:result], units_change:params[:units_change], segment:params[:segment]}})
-    new_person.to_json
+    new_person = Person.create(name: params[:name])
+    new_person.to_json(include: {bets: {description: params[:description],
+      odds: params[:odds],
+      league: params[:league],
+      bet_type: params[:bet_type],
+      result: params[:result],
+      units_change: params[:units_change],
+      segment: params[:segment]
+    }})
   end
 
   delete '/people/:id' do
@@ -20,8 +27,8 @@ class ApplicationController < Sinatra::Base
 
   patch '/people/:id' do
     person_bet = Person.find(params[:id])
-    person_bet.update(name:params[:name], include: {bets: {description:params[:description], odds:params[:odds], league:params[:league], bet_type:params[:bet_type], result:params[:result], units_change:params[:units_change], segment:params[:segment]}})
-    person_bet.to_json
+    person_bet.update(name:params[:name])
+    person_bet.to_json(include: {bets: {description:params[:description], odds:params[:odds], league:params[:league], bet_type:params[:bet_type], result:params[:result], units_change:params[:units_change], segment:params[:segment]}})
   end
 
 end
