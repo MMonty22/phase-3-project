@@ -9,17 +9,21 @@ class ApplicationController < Sinatra::Base
     people.to_json(include: :bets)
   end
 
-  post '/people' do
+  post '/people' do  
     new_person = Person.create(name: params[:name])
-    new_person.to_json(include: {bets: {description: params[:description],
-      odds: params[:odds],
-      league: params[:league],
-      bet_type: params[:bet_type],
-      result: params[:result],
-      units_change: params[:units_change],
-      segment: params[:segment]
-    }})
   end
+
+  # post '/people/:person_id/bets' do
+  #   new_bet = Bet.create() #active record association collection method
+  #   new_person.to_json(include: {bets: {description: params[:description],
+  #   odds: params[:odds],
+  #   league: params[:league],
+  #   bet_type: params[:bet_type],
+  #   result: params[:result],
+  #   units_change: params[:units_change],
+  #   segment: params[:segment]
+  #   }})
+  # end
 
   delete '/people/:id' do
     person_bet = Person.find(params[:id])

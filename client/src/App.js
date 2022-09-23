@@ -1,13 +1,14 @@
 import './App.css';
 import React, {useEffect, useState} from 'react'
-import {Routes, Route, useNavigate} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 import NavBar from "./components/NavBar"
 import MainContainer from "./components/MainContainer"
-import Form from './components/Form';
+import BetForm from './components/BetForm';
 import EditForm from './components/EditForm';
+import PersonForm from './components/PersonForm';
+import Table from './components/Table'
 
 function App() {
-  const navigate = useNavigate()
   const [bets, setBets] = useState([])
 
   useEffect(() => {
@@ -70,9 +71,11 @@ function App() {
       <h1 className="header">Live on the Line Bet Tracker</h1>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<MainContainer betData={betData} handlePersonID={handlePersonID} handleRemoveBet={handleRemoveBet}/>} navigate={navigate}/>
-        <Route path="/AddBet" element={<Form addBet={addBet}/>}/>
-        <Route path="/EditForm" element={<EditForm editBet={editBet} betID={betID}/>}/>
+        <Route exact path="/" element={<MainContainer betData={betData} handlePersonID={handlePersonID}/>}/>
+        <Route path="/bets/new" element={<BetForm addBet={addBet}/>}/>
+        <Route path="/person/new" element={<PersonForm addBet={addBet}/>}/>
+        <Route path="/bets/edit" element={<EditForm editBet={editBet} betID={betID}/>}/>
+        <Route path={`/bets/${betID}`} element={<Table betData={betData} handleRemoveBet={handleRemoveBet}/>}/>
       </Routes>
     </div>
   );

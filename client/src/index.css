@@ -1,16 +1,12 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+/* body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-image: url('/src/images/BETMGM BOX BACKGROUND_00000.jpg');
+  font-family: 'Courier New', Courier, monospace;
+  color: white
+} */
 
 .betInfo {
   display: inline-block;
@@ -49,4 +45,12 @@ label {
   margin-left: auto;
   margin-right: auto;
   display: block;
+}
+
+.nav {
+  background-color: white;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem calc((90vw - 6.25rem) / 2);
 }

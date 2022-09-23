@@ -8,7 +8,7 @@ function NavBar() {
             <NavLink to="/">
                 Bet
             </NavLink>
-            <NavLink to="/AddBet">
+            <NavLink to="/bets/new">
                 Form
             </NavLink>
         </nav>

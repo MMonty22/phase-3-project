@@ -1,14 +1,14 @@
-import React, {useState} from "react";
-import Table from "./Table";
+import React from "react";
+import {useNavigate} from "react-router-dom"
 
-function Bet({betInfo, handlePersonID, handleRemoveBet, navigate}) {
+function Bet({betInfo, handlePersonID}) {
     const {description, odds, result, units_change, person_id} = betInfo
-    const [isShown, setIsShown] = useState(false)
+    const navigate = useNavigate()
 
     function handleClick() {
-        setIsShown(!isShown)
+        navigate(`/bets/${person_id}`)
     }
-
+    
     return (
         <div className="betInfo">
             <h2>{handlePersonID(person_id)}'s Bet History</h2>
@@ -17,8 +17,7 @@ function Bet({betInfo, handlePersonID, handleRemoveBet, navigate}) {
             <h4>{description} ({odds})</h4>
             <p>Result: {result}</p>
             <p>Units Won or Lost: {units_change}</p>
-            <button onClick={handleClick}>{isShown ? "See Less Bets" : `See All of ${handlePersonID(person_id)}'s bets`}</button>
-            {isShown && <Table betInfo={betInfo} handleRemoveBet={handleRemoveBet} navigate={navigate}/>}
+            <button onClick={handleClick}>{`See All of ${handlePersonID(person_id)}'s bets`}</button>
         </div>
     )
 }

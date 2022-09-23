@@ -1,18 +1,27 @@
 import React from "react";
+import {useNavigate} from "react-router-dom"
 
-function Table({betInfo, handleRemoveBet, navigate}) {
-    const {description, odds, league, bet_type, result, units_change, segment} = betInfo
+function Table({betData, handleRemoveBet}) {
+    const navigate = useNavigate()
+    const info = betData.map((betInfo) => betInfo={betInfo})
+    const {description, odds, league, bet_type, result, units_change, segment} = info.betInfo[0]
+    console.log('infoBets[0]', info.betInfo[0])
 
     function navigateToEditForm() {
-        navigate('/EditForm')
+        navigate('/bets/edit')
     }
 
     function handleDelete() {
-        handleRemoveBet(betInfo)
+        handleRemoveBet(info.betInfo[0])
+    }
+
+    function handleClick() {
+        navigate('/bets/new')
     }
 
     return (
         <div className="table">
+            <button onClick={handleClick}>Add Bets</button>
             <table>
                 <thead>
                     <tr>
@@ -34,11 +43,11 @@ function Table({betInfo, handleRemoveBet, navigate}) {
                         <td>{league}</td>
                         <td>{bet_type}</td>
                         <td>{segment}</td>
+                        <td><button onClick={navigateToEditForm}>Edit Bet</button></td>
+                        <td><button onClick={handleDelete}>Delete Bet</button></td>
                     </tr>
                 </tbody>
             </table>
-            <button onClick={navigateToEditForm}>Edit Bet</button>
-            <button onClick={handleDelete}>Delete Bet</button>
         </div>
     )
 }
