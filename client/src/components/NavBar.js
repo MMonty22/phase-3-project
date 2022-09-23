@@ -6,11 +6,11 @@ function NavBar() {
     return (
         <nav className="nav">
             <NavLink to="/">
-                Bet
+                Home
             </NavLink>
-            <NavLink to="/bets/new">
+            {/* <NavLink to="/bets/new">
                 Form
-            </NavLink>
+            </NavLink> */}
         </nav>
     )
 

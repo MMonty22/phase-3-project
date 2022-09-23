@@ -11,6 +11,7 @@ class ApplicationController < Sinatra::Base
 
   post '/people' do  
     new_person = Person.create(name: params[:name])
+    new_person.to_json
   end
 
   # post '/people/:person_id/bets' do

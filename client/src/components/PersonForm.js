@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 function PersonForm({addBet}) {
-    const [personName, setPersonName] = useState("")
+    const [name, setName] = useState("")
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -10,14 +10,14 @@ function PersonForm({addBet}) {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({personName: personName})
+            body: JSON.stringify({name: name}),
         })
         .then(res => res.json())
-        .then(data => addBet(data))
+        .then(newPerson => addBet(newPerson))
     }
 
     function handleChange(event) {
-        setPersonName(event.target.value)
+        setName(event.target.value)
     }
 
     return (
@@ -25,8 +25,8 @@ function PersonForm({addBet}) {
             <h2>Add A Person</h2>
             <form onSubmit={handleSubmit}>
                 <label>Person</label>
-                <input id="personName" type="text" name="name" placeholder="Person's Name" value={personName} onChange={handleChange}></input>
-                <button type="submit">Add Person</button>
+                <input id="personName" type="text" name="name" placeholder="Person's Name" value={name} onChange={handleChange}></input>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )
