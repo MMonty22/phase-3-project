@@ -1,7 +1,9 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom"
 
 function PersonForm({addBet}) {
     const [name, setName] = useState("")
+    const navigate = useNavigate()
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -14,6 +16,7 @@ function PersonForm({addBet}) {
         })
         .then(res => res.json())
         .then(newPerson => addBet(newPerson))
+        navigate("/")
     }
 
     function handleChange(event) {
