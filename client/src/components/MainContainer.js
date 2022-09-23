@@ -1,9 +1,9 @@
 import React from "react";
-import Bet from "./Bet";
+import Person from "./Person";
 import {useNavigate} from "react-router-dom"
 
-function MainContainer({betData, handlePersonID}) {
-    const info = betData.map((betInfo) => <Bet key={betInfo.id} betInfo={betInfo[0]} handlePersonID={handlePersonID}/>)
+function MainContainer({bets}) {
+    const info = bets.map((betInfo) => <Person key={betInfo.id} betInfo={betInfo} />)
     const navigate = useNavigate()
 
     function navigateToPersonForm() {

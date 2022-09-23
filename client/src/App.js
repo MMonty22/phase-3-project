@@ -22,31 +22,8 @@ function App() {
     setBets(updatedBets)
   }
 
-  const betData = bets.map((betInfo) => betInfo.bets)
   //const names = bets.forEach((person) => person.name)
-
-  function handlePersonID(person_id) {
-    switch(person_id) {
-        case 1:
-            return 'Dani'
-        case 2:
-            return 'Brad'
-        case 3:
-            return 'Cam'
-        case 4:
-            return 'Michael'
-        case 5:
-            return 'Funston'
-        case 6:
-          return 'Cody'
-        case 7:
-            return 'Tank'
-        default:
-      }
-  }
-  //need to change this, won't work with post requests, and dont want to have to hard code every name
-
-  const betID = betData.map((betInfo) => betInfo[0].id)
+  console.log('bets', bets)
 
   function editBet(editedBet) {
     const editedBets = [editedBet,...bets]
@@ -57,6 +34,8 @@ function App() {
     const formerBets = bets.filter((bet) => bet.id !== betToRemove.id)
     setBets(formerBets)
   }
+
+  const betID = bets.map((betInfo) => betInfo.id)
 
   function handleRemoveBet() {
     fetch(`http://localhost:9292/people/${betID}`, {
@@ -71,11 +50,11 @@ function App() {
       <h1 className="header">Live on the Line Bet Tracker</h1>
       <NavBar />
       <Routes>
-        <Route exact path="/" element={<MainContainer betData={betData} handlePersonID={handlePersonID}/>}/>
+        <Route exact path="/" element={<MainContainer bets={bets}/>}/>
         <Route path="/bets/new" element={<BetForm addBet={addBet}/>}/>
         <Route path="/person/new" element={<PersonForm addBet={addBet}/>}/>
-        <Route path="/bets/edit" element={<EditForm editBet={editBet} betID={betID}/>}/>
-        <Route path={`/bets/${betID}`} element={<Table betData={betData} handleRemoveBet={handleRemoveBet}/>}/>
+        <Route path="/bets/edit" element={<EditForm editBet={editBet} bets={bets}/>}/>
+        <Route path="/bets" element={<Table bets={bets} handleRemoveBet={handleRemoveBet}/>}/>
       </Routes>
     </div>
   );

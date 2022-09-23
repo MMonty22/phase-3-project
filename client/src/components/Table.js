@@ -1,11 +1,13 @@
 import React from "react";
-import {useNavigate} from "react-router-dom"
+import {useNavigate, useSearchParams} from "react-router-dom"
 
-function Table({betData, handleRemoveBet}) {
+function Table({bets, handleRemoveBet}) {
     const navigate = useNavigate()
-    const info = betData.map((betInfo) => betInfo={betInfo})
-    const {description, odds, league, bet_type, result, units_change, segment} = info.betInfo[0]
-    console.log('infoBets[0]', info.betInfo[0])
+    const [searchParams] = useSearchParams()
+    const userId = searchParams.get("id")
+    const info = bets.map((betInfo) => betInfo={betInfo})
+    
+    const [relevantPerson] = bets.filter(bet => String(bet.id) === String(userId))
 
     function navigateToEditForm() {
         navigate('/bets/edit')
@@ -35,17 +37,17 @@ function Table({betData, handleRemoveBet}) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{description}</td>
-                        <td>{odds}</td>
-                        <td>{result}</td>
-                        <td>{units_change}</td>
-                        <td>{league}</td>
-                        <td>{bet_type}</td>
-                        <td>{segment}</td>
+                    {relevantPerson?.bets?.map(bet => (<tr>
+                        <td>{bet.description}</td>
+                        <td>{bet.odds}</td>
+                        <td>{bet.result}</td>
+                        <td>{bet.units_change}</td>
+                        <td>{bet.league}</td>
+                        <td>{bet.bet_type}</td>
+                        <td>{bet.segment}</td>
                         <td><button onClick={navigateToEditForm}>Edit Bet</button></td>
                         <td><button onClick={handleDelete}>Delete Bet</button></td>
-                    </tr>
+                    </tr>))}
                 </tbody>
             </table>
         </div>

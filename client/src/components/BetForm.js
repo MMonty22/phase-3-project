@@ -2,7 +2,6 @@ import React, {useState} from "react";
 
 function Form({addBet}) {
     const [formData, setFormData] = useState({
-        name: "",
         bet: "",
         odds: "",
         league: "",
@@ -11,12 +10,10 @@ function Form({addBet}) {
         units_change: "",
         segment: ""
     })
-    const [checked, setChecked] = useState(false)
-
+    
     function handleSubmit(event) {
         event.preventDefault()
         const newBetObj = {
-            name: formData.name,
             bet: formData.bet,
             odds: formData.odds,
             league: formData.league,
@@ -43,16 +40,10 @@ function Form({addBet}) {
         })
     }
 
-    function handleCheck() {
-        setChecked(!checked)
-    }
-
     return (
         <div className="betForm">
             <h2>Add A Bet</h2>
             <form onSubmit={handleSubmit}>
-                <label>Person</label>
-                <input id="personName" type="text" name="name" placeholder="Person's Name" value={formData.personName} onChange={handleChange}></input>
                 <label>Bet</label>
                 <input id="bet" type="text" name="bet" placeholder="Ex: Cubs Moneyline vs White Sox" value={formData.bet} onChange={handleChange}></input>
                 <label>Odds</label>
@@ -67,9 +58,7 @@ function Form({addBet}) {
                 <input id="betType" type="text" name="betType" placeholder="Ex: Spread or Moneyline or Total etc." value={formData.bet_type} onChange={handleChange}></input>
                 <label>Segment</label>
                 <input id="segment" type="text" name="segment" placeholder="Ex: Take It to the Bank" value={formData.segment} onChange={handleChange}></input>
-                <button type="submit">Add Bet</button>
-                <label>Add Another Bet?</label>
-                <input id="checkbox" type="checkbox" checked={checked} onChange={handleCheck}></input>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )
