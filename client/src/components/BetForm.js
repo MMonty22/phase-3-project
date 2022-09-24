@@ -1,8 +1,12 @@
 import React, {useState} from "react";
+import {useSearchParams, useNavigate} from "react-router-dom"
 
 function Form({addBet}) {
+    const [searchParams] = useSearchParams()
+    const userID = searchParams.get("id")
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({
-        bet: "",
+        descrption: "",
         odds: "",
         league: "",
         result: "",
@@ -10,11 +14,11 @@ function Form({addBet}) {
         units_change: "",
         segment: ""
     })
-    
+
     function handleSubmit(event) {
         event.preventDefault()
         const newBetObj = {
-            bet: formData.bet,
+            descrption: formData.descrption,
             odds: formData.odds,
             league: formData.league,
             result: formData.result,
@@ -22,7 +26,7 @@ function Form({addBet}) {
             bet_type: formData.bet_type,
             segment: formData.segment
         }
-        fetch('http://localhost:9292/people', {
+        fetch(`http://localhost:9292/people/${userID}/bets`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -31,6 +35,7 @@ function Form({addBet}) {
         })
         .then(res => res.json())
         .then(data => addBet(data))
+        navigate(`/bets/?id=${userID}`)
     }
 
     function handleChange(event) {
@@ -44,8 +49,8 @@ function Form({addBet}) {
         <div className="betForm">
             <h2>Add A Bet</h2>
             <form onSubmit={handleSubmit}>
-                <label>Bet</label>
-                <input id="bet" type="text" name="bet" placeholder="Ex: Cubs Moneyline vs White Sox" value={formData.bet} onChange={handleChange}></input>
+                <label>Bet Descrption</label>
+                <input id="bet" type="text" name="bet" placeholder="Ex: Cubs Moneyline vs White Sox" value={formData.descrption} onChange={handleChange}></input>
                 <label>Odds</label>
                 <input id="odds" type="text" name="odds" placeholder="-110" value={formData.odds} onChange={handleChange}></input>
                 <label>League</label>

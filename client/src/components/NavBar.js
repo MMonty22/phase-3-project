@@ -8,9 +8,6 @@ function NavBar() {
             <NavLink to="/">
                 Home
             </NavLink>
-            {/* <NavLink to="/bets/new">
-                Form
-            </NavLink> */}
         </nav>
     )
 

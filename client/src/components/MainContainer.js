@@ -2,8 +2,12 @@ import React from "react";
 import Person from "./Person";
 import {useNavigate} from "react-router-dom"
 
-function MainContainer({bets}) {
-    const info = bets.map((betInfo) => <Person key={betInfo.id} betInfo={betInfo} />)
+function MainContainer({allUserData}) {
+    const info = allUserData.map(function(individualUserData){
+        //console.log('individualUserData', individualUserData)
+        //console.log('bets', individualUserData.bets)
+        return <Person key={individualUserData.id} individualUserData={individualUserData} bets={individualUserData.bets}/>
+    })
     const navigate = useNavigate()
 
     function navigateToPersonForm() {

@@ -95,6 +95,16 @@ Bet.create([
         units_change: 1,
         segment: "Bank",
         person_id: 7
+    },
+    {
+        description: "Bears (+10) vs Packers",
+        odds: "-110",
+        league: "NFL",
+        bet_type: "Spread",
+        result: "Win",
+        units_change: 1,
+        segment: "Bank",
+        person_id: 1
     }
 ])
 puts "✅ Done seeding!"

@@ -1,29 +1,38 @@
 import React from "react";
 import {useNavigate, useSearchParams} from "react-router-dom"
 
-function Table({bets, handleRemoveBet}) {
+function Table({allUserData, setAllUserData}) {
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
     const userId = searchParams.get("id")
-    const info = bets.map((betInfo) => betInfo={betInfo})
-    
-    const [relevantPerson] = bets.filter(bet => String(bet.id) === String(userId))
+    const [relevantPerson] = allUserData.filter(bet => String(bet.id) === String(userId))
 
-    function navigateToEditForm() {
-        navigate('/bets/edit')
+    function navigateToEditForm(betID) {
+        navigate(`/bets/edit/?id=${userId}&betID=${betID}`)
     }
 
-    function handleDelete() {
-        handleRemoveBet(info.betInfo[0])
+    function handleDelete(betID) {
+        fetch(`http://localhost:9292/people/${betID}`, {
+            method: "DELETE",
+        })
+        .then(res => res.json())
+        .then(deletedBet => removeBet(deletedBet))
+        navigate('/')
     }
 
-    function handleClick() {
-        navigate('/bets/new')
+    function removeBet(betToRemove) {
+        const formerUserData = allUserData.filter((individualUserData) => individualUserData.bets.id !== betToRemove.id)
+        setAllUserData(formerUserData)
+    }
+
+    function navigateToBetForm() {
+        navigate(`/bets/new/?id=${userId}`)
     }
 
     return (
         <div className="table">
-            <button onClick={handleClick}>Add Bets</button>
+            <h2>{relevantPerson.name}'s Bets</h2>
+            <button onClick={navigateToBetForm}>Add Bets</button>
             <table>
                 <thead>
                     <tr>
@@ -45,8 +54,8 @@ function Table({bets, handleRemoveBet}) {
                         <td>{bet.league}</td>
                         <td>{bet.bet_type}</td>
                         <td>{bet.segment}</td>
-                        <td><button onClick={navigateToEditForm}>Edit Bet</button></td>
-                        <td><button onClick={handleDelete}>Delete Bet</button></td>
+                        <td><button onClick={() => navigateToEditForm(bet.id)}>Edit Bet</button></td>
+                        <td><button onClick={() => handleDelete(bet.id)}>Delete Bet</button></td>
                     </tr>))}
                 </tbody>
             </table>
