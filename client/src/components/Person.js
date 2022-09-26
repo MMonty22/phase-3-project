@@ -6,16 +6,9 @@ function Person({ individualUserData, bets }) {
     const [mostRecentBet, setmostRecentBet] = useState()
 
     useEffect(() => {
-        const compareDates = (date1, date2) => {
-            if (date1 > date2) return 1
-            if (date2 > date1) return -1
-            return 0
-        }
-        const recents = bets.sort((a,b) => (compareDates(new Date(a.updated_at), new Date(b.updated_at))))
-        //console.log('recents', recents)
+        const recents = bets.sort((a,b) => ((new Date(b.updated_at) - new Date(a.updated_at))))
         return setmostRecentBet(recents[0])
     }, [mostRecentBet, bets])
-    //how do I get to sort by bet.updated_at, what i have above does nothing
 
     function navigateToTable() {
         navigate(`/bets/?id=${individualUserData.id}`)
