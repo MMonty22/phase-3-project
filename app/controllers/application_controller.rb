@@ -6,8 +6,7 @@ class ApplicationController < Sinatra::Base
   # Add your routes here
   #create and read actions for both models
   #full CRUD capability for one of the models
-  #have read for both and create for one
-    #so need create for bets (showed up on page and server but had to refresh page and some info is missing), update for bets (updates on backend but some info becomes null) and delete for bets (deletes from server but still see it on the page unless i refresh)
+  #have read for both and delete for bets
   get '/people' do
     people = Person.all
     people.to_json(include: :bets)
@@ -34,6 +33,7 @@ class ApplicationController < Sinatra::Base
   delete '/people/:bet_id' do
     bet = Bet.find_by(id: params[:bet_id])
     bet.destroy
+    bet.to_json
   end
 
 end

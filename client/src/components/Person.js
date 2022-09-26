@@ -17,7 +17,6 @@ function Person({ individualUserData, bets }) {
     return (
         <div className="betInfo">
             <h2>{individualUserData.name}'s Bet History</h2>
-            <p>Overall Record:</p>
             <h3>Most Recent Bet</h3>
             <h4>{mostRecentBet?.description} ({mostRecentBet?.odds})</h4>
             <p>Result: {mostRecentBet?.result}</p>

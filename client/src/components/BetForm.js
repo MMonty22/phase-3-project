@@ -6,7 +6,7 @@ function Form({addBet}) {
     const userID = searchParams.get("id")
     const navigate = useNavigate()
     const [formData, setFormData] = useState({
-        descrption: "",
+        description: "",
         odds: "",
         league: "",
         result: "",
@@ -18,7 +18,7 @@ function Form({addBet}) {
     function handleSubmit(event) {
         event.preventDefault()
         const newBetObj = {
-            descrption: formData.descrption,
+            description: formData.description,
             odds: formData.odds,
             league: formData.league,
             result: formData.result,
@@ -50,7 +50,7 @@ function Form({addBet}) {
             <h2>Add A Bet</h2>
             <form onSubmit={handleSubmit}>
                 <label>Bet Descrption</label>
-                <input id="bet" type="text" name="bet" placeholder="Ex: Cubs Moneyline vs White Sox" value={formData.descrption} onChange={handleChange}></input>
+                <input id="description" type="text" name="bet" placeholder="Ex: Cubs Moneyline vs White Sox" value={formData.description} onChange={handleChange}></input>
                 <label>Odds</label>
                 <input id="odds" type="text" name="odds" placeholder="-110" value={formData.odds} onChange={handleChange}></input>
                 <label>League</label>
@@ -58,9 +58,9 @@ function Form({addBet}) {
                 <label>Result</label>
                 <input id="result" type="text" name="result" placeholder="Leave blank if no result" value={formData.result} onChange={handleChange}></input>
                 <label>Units Won or Lost</label>
-                <input id="unitsChange" type="text" name="units_change" placeholder="Ex: +1.3 or -1.15" value={formData.units_change} onChange={handleChange}></input>
+                <input id="units_change" type="text" name="units_change" placeholder="Ex: +1.3 or -1.15" value={formData.units_change} onChange={handleChange}></input>
                 <label>Type of Bet</label>
-                <input id="betType" type="text" name="betType" placeholder="Ex: Spread or Moneyline or Total etc." value={formData.bet_type} onChange={handleChange}></input>
+                <input id="bet_type" type="text" name="bet_type" placeholder="Ex: Spread or Moneyline or Total etc." value={formData.bet_type} onChange={handleChange}></input>
                 <label>Segment</label>
                 <input id="segment" type="text" name="segment" placeholder="Ex: Take It to the Bank" value={formData.segment} onChange={handleChange}></input>
                 <button type="submit">Submit</button>
