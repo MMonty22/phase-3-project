@@ -15,7 +15,7 @@ function App() {
     fetch('http://localhost:9292/people')
     .then(res => res.json())
     .then(data => setAllUserData(data))
-  }, [])
+  }, [allUserData])
 
   function addBet(newBet) {
     const updatedUserData = [...allUserData, newBet]

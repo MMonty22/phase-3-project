@@ -6,7 +6,7 @@ function Person({ individualUserData, bets }) {
     const [mostRecentBet, setmostRecentBet] = useState()
 
     useEffect(() => {
-        const recents = bets.sort((a,b) => ((new Date(b.updated_at) - new Date(a.updated_at))))
+        const recents = bets.sort((a,b) => ((new Date(b.created_at) - new Date(a.created_at))))
         return setmostRecentBet(recents[0])
     }, [mostRecentBet, bets])
 
@@ -15,7 +15,7 @@ function Person({ individualUserData, bets }) {
     }
 
     return (
-        <div className="betInfo">
+        <div className="person">
             <h2>{individualUserData.name}'s Bet History</h2>
             <h3>Most Recent Bet</h3>
             <h4>{mostRecentBet?.description} ({mostRecentBet?.odds})</h4>

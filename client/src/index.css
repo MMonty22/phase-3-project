@@ -1,12 +1,12 @@
-/* body {
+body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   background-image: url('/src/images/BETMGM BOX BACKGROUND_00000.jpg');
-  font-family: 'Courier New', Courier, monospace;
-  color: white
-} */
+  font-family: 'Times New Roman', Times, serif;
+  color: #bda871
+}
 
 .betInfo {
   display: inline-block;
@@ -26,31 +26,32 @@ input {
   border-bottom: 2px solid gray;
 }
 
-label {
-  margin-top: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 0.625rem;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: bold;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.new-card-form button {
-  width: 6.25rem;
-  height: 2.1875rem;
-  margin-top: 1rem;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
 .nav {
-  background-color: white;
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
   padding: 0.5rem calc((90vw - 6.25rem) / 2);
+  color: #282a2d;
+  background-color: #bda871;
+}
+
+.person {
+  margin: 2rem 2.3rem;
+  margin-bottom: 1.5625rem;
+  justify-content: center;
+  text-align: center;
+  border: #282a2d solid 1px;
+  background-color: #bda871;
+  display: inline-grid;
+  width: 30rem;
+  height: 20rem;
+  box-shadow: 3px 4px #504b55;
+  color: black;
+}
+
+.person button {
+  width: 30rem;
+  height: 1.5rem;
+  background-color: #282a2d;
+  color: #bda871;
 }

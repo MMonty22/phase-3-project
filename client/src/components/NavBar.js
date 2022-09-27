@@ -8,6 +8,9 @@ function NavBar() {
             <NavLink to="/">
                 Home
             </NavLink>
+            <NavLink to="/person/new">
+                Add A Person
+            </NavLink>
         </nav>
     )
 
