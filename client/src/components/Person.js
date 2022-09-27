@@ -6,9 +6,10 @@ function Person({ individualUserData, bets }) {
     const [mostRecentBet, setmostRecentBet] = useState()
 
     useEffect(() => {
-        const recents = bets.sort((a,b) => ((new Date(b.created_at) - new Date(a.created_at))))
-        return setmostRecentBet(recents[0])
-    }, [mostRecentBet, bets])
+        const recents = bets?.sort((a,b) => ((new Date(b.created_at) - new Date(a.created_at))))
+        if (recents) {
+            setmostRecentBet(recents[0])}
+    }, [mostRecentBet, bets, individualUserData])
 
     function navigateToTable() {
         navigate(`/bets/?id=${individualUserData.id}`)

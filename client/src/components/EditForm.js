@@ -10,13 +10,13 @@ function EditForm({allUserData, setAllUserData}) {
     const relevantBet = relevantPerson.bets.find(bet => String(bet.id) === String(betID))
 
     const [editFormData, setEditFormData] = useState({
-        description: relevantBet.description,
-        odds: relevantBet.odds,
-        league: relevantBet.league,
-        result: relevantBet.result,
-        units_change: relevantBet.units_change,
-        bet_type: relevantBet.bet_type,
-        segment: relevantBet.segment
+        description: relevantBet.description ?? "",
+        odds: relevantBet.odds ?? "",
+        league: relevantBet.league ?? "",
+        result: relevantBet.result ?? "",
+        units_change: relevantBet.units_change ?? "",
+        bet_type: relevantBet.bet_type ?? "",
+        segment: relevantBet.segment ?? ""
     })
 
     function handleChange(event) {
@@ -29,14 +29,15 @@ function EditForm({allUserData, setAllUserData}) {
     function handleSubmit(event) {
         event.preventDefault()
         const editedBetObj = {
-            description: editFormData.description,
-            odds: editFormData.odds,
-            league: editFormData.league,
-            result: editFormData.result,
-            units_change: editFormData.units_change,
-            bet_type: editFormData.bet_type,
-            segment: editFormData.segment
+            description: editFormData.description ?? "",
+            odds: editFormData.odds ?? "",
+            league: editFormData.league ?? "",
+            result: editFormData.result ?? "",
+            units_change: editFormData.units_change ?? "",
+            bet_type: editFormData.bet_type ?? "",
+            segment: editFormData.segment ?? ""
         }
+        console.log('editedBetObj', editedBetObj)
         fetch(`http://localhost:9292/people/${userID}/${betID}`, { 
             method: "PATCH",
             headers: {
@@ -45,7 +46,10 @@ function EditForm({allUserData, setAllUserData}) {
             body: JSON.stringify(editedBetObj)
         })
         .then(res => res.json())
-        .then(data => editBet(data))
+        .then(data => {
+            editBet(data) 
+            console.log('data', data)
+        })
         navigate("/")
     }
 
@@ -72,7 +76,7 @@ function EditForm({allUserData, setAllUserData}) {
                 <input id="bet_type" type="text" name="bet_type" value={editFormData.bet_type} onChange={handleChange}></input>
                 <label>Segment</label>
                 <input id="segment" type="text" name="segment" value={editFormData.segment} onChange={handleChange}></input>
-                <button type="submit">Submit Edit</button>
+                <button id="editBetButton" type="submit">Submit Edit</button>
             </form>
         </div>
     )

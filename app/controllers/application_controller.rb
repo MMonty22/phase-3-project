@@ -4,9 +4,6 @@ class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
   # Add your routes here
-  #create and read actions for both models
-  #full CRUD capability for one of the models
-  #have read for both and delete for bets
   get '/people' do
     people = Person.all
     people.to_json(include: :bets)

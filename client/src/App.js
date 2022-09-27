@@ -15,11 +15,17 @@ function App() {
     fetch('http://localhost:9292/people')
     .then(res => res.json())
     .then(data => setAllUserData(data))
-  }, [allUserData])
+  }, [])
 
-  function addBet(newBet) {
-    const updatedUserData = [...allUserData, newBet]
-    setAllUserData(updatedUserData)
+  function addBet(newBet, userID) {
+    const [relevantPerson] = allUserData.filter((user) => String(user.id) === String(userID))
+    const updatedBets = [...relevantPerson.bets, newBet]
+    const updatedUserData = {
+      ...relevantPerson,
+      bets: updatedBets
+    }
+    const updatedAllUserData = allUserData.filter((person) => person.id !== relevantPerson.id )
+    setAllUserData([...updatedAllUserData, updatedUserData])
   }
 
   return (

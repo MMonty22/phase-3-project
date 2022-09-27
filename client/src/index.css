@@ -37,6 +37,11 @@ input {
   background-color: #bda871;
 }
 
+a:visited { 
+  text-decoration: none; 
+  color: #282a2d; 
+}
+
 .person {
   margin: 2rem 2.3rem;
   margin-bottom: 1.5625rem;
@@ -59,6 +64,18 @@ input {
 }
 
 #submitPersonButton {
+  background-color: #282a2d;
+  color: #bda871;
+  margin: 1rem;
+}
+
+#submitBetButton {
+  background-color: #282a2d;
+  color: #bda871;
+  margin: 1rem;
+}
+
+#editBetButton {
   background-color: #282a2d;
   color: #bda871;
   margin: 1rem;

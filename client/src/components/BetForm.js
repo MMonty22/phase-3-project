@@ -34,7 +34,7 @@ function Form({addBet}) {
             body: JSON.stringify(newBetObj)
         })
         .then(res => res.json())
-        .then(data => addBet(data))
+        .then(data => addBet(data, userID))
         navigate(`/bets/?id=${userID}`)
     }
 
@@ -63,7 +63,7 @@ function Form({addBet}) {
                 <input id="bet_type" type="text" name="bet_type" placeholder="Ex: Spread or Moneyline or Total etc." value={formData.bet_type} onChange={handleChange}></input>
                 <label>Segment</label>
                 <input id="segment" type="text" name="segment" placeholder="Ex: Take It to the Bank" value={formData.segment} onChange={handleChange}></input>
-                <button type="submit">Submit</button>
+                <button id="submitBetButton" type="submit">Submit</button>
             </form>
         </div>
     )

@@ -17,12 +17,16 @@ function Table({allUserData, setAllUserData}) {
         })
         .then(res => res.json())
         .then(deletedBet => removeBet(deletedBet))
-        navigate('/')
     }
 
     function removeBet(betToRemove) {
-        const formerUserData = allUserData.filter((individualUserData) => individualUserData.bets.id !== betToRemove.id)
-        setAllUserData(formerUserData)
+        const updatedBets = relevantPerson.bets.filter((bet) => bet.id !== betToRemove.id)
+        const updatedUserData = {
+            ...relevantPerson,
+            bets: updatedBets
+        }
+        const updatedAllUserData = allUserData.filter((person) => person.id !== relevantPerson.id )
+        setAllUserData([updatedUserData, ...updatedAllUserData,])
     }
 
     function navigateToBetForm() {
