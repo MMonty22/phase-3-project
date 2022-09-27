@@ -27,9 +27,9 @@ function PersonForm({addBet}) {
         <div>
             <h2>Add A Person</h2>
             <form onSubmit={handleSubmit}>
-                <label>Person</label>
+                <label></label>
                 <input id="personName" type="text" name="name" placeholder="Person's Name" value={name} onChange={handleChange}></input>
-                <button type="submit">Submit</button>
+                <button id="submitPersonButton" type="submit">Submit</button>
             </form>
         </div>
     )

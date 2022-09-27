@@ -24,6 +24,8 @@ input {
   font-family: inherit;
   border: none;
   border-bottom: 2px solid gray;
+  background-color: #282a2d;
+  color: #bda871;
 }
 
 .nav {
@@ -54,4 +56,29 @@ input {
   height: 1.5rem;
   background-color: #282a2d;
   color: #bda871;
+}
+
+#submitPersonButton {
+  background-color: #282a2d;
+  color: #bda871;
+  margin: 1rem;
+}
+
+.table button {
+  background-color: #282a2d;
+  color: #bda871;
+}
+
+#addBetButton {
+  margin: 1rem;
+}
+
+table, th, td {
+  border: 1px solid;
+}
+
+table {
+  width: 100%;
+  background-color: #282a2d;
+  border-collapse: collapse;
 }

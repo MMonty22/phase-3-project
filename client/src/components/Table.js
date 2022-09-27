@@ -32,7 +32,7 @@ function Table({allUserData, setAllUserData}) {
     return (
         <div className="table">
             <h2>{relevantPerson.name}'s Bets</h2>
-            <button onClick={navigateToBetForm}>Add Bets</button>
+            <button id="addBetButton" onClick={navigateToBetForm}>Add A Bet</button>
             <table>
                 <thead>
                     <tr>
