@@ -36,7 +36,7 @@ function App() {
         <Route exact path="/" element={<MainContainer allUserData={allUserData}/>}/>
         <Route path="/bets" element={<Table allUserData={allUserData} setAllUserData={setAllUserData}/>}/>
         <Route path="/bets/new" element={<BetForm addBet={addBet}/>}/>
-        <Route path="/person/new" element={<PersonForm addBet={addBet}/>}/>
+        <Route path="/person/new" element={<PersonForm allUserData={allUserData} setAllUserData={setAllUserData}/>}/>
         <Route path="/bets/edit" element={<EditForm setAllUserData={setAllUserData} allUserData={allUserData}/>}/>
       </Routes>
     </div>

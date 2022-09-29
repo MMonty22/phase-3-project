@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom"
 
-function PersonForm({addBet}) {
+function PersonForm({allUserData, setAllUserData}) {
     const [name, setName] = useState("")
     const navigate = useNavigate()
 
@@ -15,8 +15,13 @@ function PersonForm({addBet}) {
             body: JSON.stringify({name: name}),
         })
         .then(res => res.json())
-        .then(newPerson => addBet(newPerson))
+        .then(newPerson => addPerson(newPerson))
         navigate("/")
+    }
+
+    function addPerson(newPerson) {
+        const newUsers = [...allUserData, newPerson]
+        setAllUserData(newUsers)
     }
 
     function handleChange(event) {
