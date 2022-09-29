@@ -19,13 +19,21 @@ function App() {
 
   function addBet(newBet, userID) {
     const [relevantPerson] = allUserData.filter((user) => String(user.id) === String(userID))
-    const updatedBets = [...relevantPerson.bets, newBet]
-    const updatedUserData = {
-      ...relevantPerson,
-      bets: updatedBets
-    }
+    console.log('relevantPerson', relevantPerson)
     const updatedAllUserData = allUserData.filter((person) => person.id !== relevantPerson.id)
-    setAllUserData([...updatedAllUserData, updatedUserData])
+    if ('bets' in relevantPerson) {
+      const updatedBets = [...relevantPerson.bets, newBet]
+      const updatedUserData = {
+        ...relevantPerson,
+        bets: updatedBets
+      }
+      setAllUserData([...updatedAllUserData, updatedUserData])
+    }
+    else {
+      let newBetArray = [newBet]
+      const relevantPersonData = {...relevantPerson, bets: newBetArray}
+      setAllUserData([relevantPersonData, ...updatedAllUserData])
+    }
   }
 
   return (
