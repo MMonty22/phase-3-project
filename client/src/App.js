@@ -24,7 +24,7 @@ function App() {
       ...relevantPerson,
       bets: updatedBets
     }
-    const updatedAllUserData = allUserData.filter((person) => person.id !== relevantPerson.id )
+    const updatedAllUserData = allUserData.filter((person) => person.id !== relevantPerson.id)
     setAllUserData([...updatedAllUserData, updatedUserData])
   }
 

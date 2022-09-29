@@ -37,7 +37,6 @@ function EditForm({allUserData, setAllUserData}) {
             bet_type: editFormData.bet_type ?? "",
             segment: editFormData.segment ?? ""
         }
-        console.log('editedBetObj', editedBetObj)
         fetch(`http://localhost:9292/people/${userID}/${betID}`, { 
             method: "PATCH",
             headers: {
@@ -46,16 +45,19 @@ function EditForm({allUserData, setAllUserData}) {
             body: JSON.stringify(editedBetObj)
         })
         .then(res => res.json())
-        .then(data => {
-            editBet(data) 
-            console.log('data', data)
-        })
+        .then(data => editBet(data))
         navigate("/")
     }
 
     function editBet(editedBet) {
-        const editedUserData = [...allUserData, editedBet]
-        setAllUserData(editedUserData)
+        const [relevantPerson] = allUserData.filter((user) => String(user.id) === String(userID))
+        const nonEditedBets = relevantPerson.bets.filter((bet) => String(bet.id) !== String(editedBet.id))
+        const updatedUserData = {
+          ...relevantPerson,
+          bets: [...nonEditedBets, editedBet]
+        }
+        const updatedAllUserData = allUserData.filter((person) => person.id !== relevantPerson.id)
+        setAllUserData([...updatedAllUserData, updatedUserData])
     }
 
     return (
