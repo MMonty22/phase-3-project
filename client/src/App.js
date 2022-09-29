@@ -19,7 +19,6 @@ function App() {
 
   function addBet(newBet, userID) {
     const [relevantPerson] = allUserData.filter((user) => String(user.id) === String(userID))
-    console.log('relevantPerson', relevantPerson)
     const updatedAllUserData = allUserData.filter((person) => person.id !== relevantPerson.id)
     if ('bets' in relevantPerson) {
       const updatedBets = [...relevantPerson.bets, newBet]

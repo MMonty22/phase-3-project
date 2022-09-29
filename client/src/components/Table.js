@@ -50,7 +50,7 @@ function Table({allUserData, setAllUserData}) {
                     </tr>
                 </thead>
                 <tbody>
-                    {relevantPerson?.bets?.map(bet => (<tr>
+                    {relevantPerson?.bets?.map(bet => (<tr key={bet.id}>
                         <td>{bet.description}</td>
                         <td>{bet.odds}</td>
                         <td>{bet.result}</td>
