@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useSearchParams, useNavigate} from "react-router-dom"
 
-function Form({addBet}) {
+function Form({allUserData, setAllUserData}) {
     const [searchParams] = useSearchParams()
     const userID = searchParams.get("id")
     const navigate = useNavigate()
@@ -37,6 +37,24 @@ function Form({addBet}) {
         .then(data => addBet(data, userID))
         navigate(`/bets/?id=${userID}`)
     }
+
+    function addBet(newBet, userID) {
+        const [relevantPerson] = allUserData.filter((user) => String(user.id) === String(userID))
+        const updatedAllUserData = allUserData.filter((person) => person.id !== relevantPerson.id)
+        if ('bets' in relevantPerson) {
+          const updatedBets = [...relevantPerson.bets, newBet]
+          const updatedUserData = {
+            ...relevantPerson,
+            bets: updatedBets
+          }
+          setAllUserData([...updatedAllUserData, updatedUserData])
+        }
+        else {
+          let newBetArray = [newBet]
+          const relevantPersonData = {...relevantPerson, bets: newBetArray}
+          setAllUserData([relevantPersonData, ...updatedAllUserData])
+        }
+      }
 
     function handleChange(event) {
         setFormData({

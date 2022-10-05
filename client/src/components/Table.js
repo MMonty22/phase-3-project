@@ -12,7 +12,7 @@ function Table({allUserData, setAllUserData}) {
     }
 
     function handleDelete(betID) {
-        fetch(`http://localhost:9292/people/${betID}`, {
+        fetch(`http://localhost:9292/bet/${betID}`, {
             method: "DELETE",
         })
         .then(res => res.json())

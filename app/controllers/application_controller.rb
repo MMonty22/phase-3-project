@@ -14,21 +14,21 @@ class ApplicationController < Sinatra::Base
     new_person.to_json
   end
 
-  post '/people/:person_id/bets' do
-    person = Person.find_by(id: params[:person_id])
+  post '/people/:id/bets' do
+    person = Person.find(params[:id])
     new_bet = person.bets.create(description: params[:description], odds: params[:odds], league: params[:league], result: params[:result], units_change: params[:units_change], bet_type: params[:bet_type], segment: params[:segment])
     new_bet.to_json
   end
 
-  patch '/people/:person_id/:bet_id' do
-    person = Person.find_by(id: params[:person_id])
+  patch '/people/:id/:bet_id' do
+    person = Person.find(params[:id])
     edit_bet = person.bets.find_by(id: params[:bet_id])
     edit_bet.update(description: params[:description], odds: params[:odds], league: params[:league], result: params[:result], units_change: params[:units_change], bet_type: params[:bet_type], segment: params[:segment])
     edit_bet.to_json
   end
 
-  delete '/people/:bet_id' do
-    bet = Bet.find_by(id: params[:bet_id])
+  delete '/bet/:id' do
+    bet = Bet.find(params[:id])
     bet.destroy
     bet.to_json
   end

@@ -17,24 +17,6 @@ function App() {
     .then(data => setAllUserData(data))
   }, [])
 
-  function addBet(newBet, userID) {
-    const [relevantPerson] = allUserData.filter((user) => String(user.id) === String(userID))
-    const updatedAllUserData = allUserData.filter((person) => person.id !== relevantPerson.id)
-    if ('bets' in relevantPerson) {
-      const updatedBets = [...relevantPerson.bets, newBet]
-      const updatedUserData = {
-        ...relevantPerson,
-        bets: updatedBets
-      }
-      setAllUserData([...updatedAllUserData, updatedUserData])
-    }
-    else {
-      let newBetArray = [newBet]
-      const relevantPersonData = {...relevantPerson, bets: newBetArray}
-      setAllUserData([relevantPersonData, ...updatedAllUserData])
-    }
-  }
-
   return (
     <div className="App">
       <h1 className="header">Live on the Line Bet Tracker</h1>
@@ -42,7 +24,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<MainContainer allUserData={allUserData}/>}/>
         <Route path="/bets" element={<Table allUserData={allUserData} setAllUserData={setAllUserData}/>}/>
-        <Route path="/bets/new" element={<BetForm addBet={addBet}/>}/>
+        <Route path="/bets/new" element={<BetForm allUserData={allUserData} setAllUserData={setAllUserData}/>}/>
         <Route path="/person/new" element={<PersonForm allUserData={allUserData} setAllUserData={setAllUserData}/>}/>
         <Route path="/bets/edit" element={<EditForm setAllUserData={setAllUserData} allUserData={allUserData}/>}/>
       </Routes>
