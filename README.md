@@ -25,7 +25,7 @@
   /phase-3-project/client$ npm start
   ```
 
-  This will run the frontend serer on http://localhost:3000/.
+  This will run the frontend server on http://localhost:3000/.
 
 ## How to Use
 - View all of the people's most recent bets on the home page
