@@ -12,6 +12,7 @@
   ```
   /phase-3-project$ bundle install 
   /phase-3-project$ rake db:migrate
+  /phase-3-project$ rake db:seed
   /phase-3-project$ rake server  
   ```
 
